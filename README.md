@@ -1,5 +1,5 @@
 # j00kslebot
-An example of bot using node-slack-client. 
+An example of bot using nodejs' slack-client. 
 
 The necessary file lib/token.json is obviously not committed to the GitHub repo :-)
 

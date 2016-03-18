@@ -1,0 +1,32 @@
+{
+  "name": "j00xslebot",
+  "version": "1.0.0",
+  "description": "An example of bot using node-slack-client. ",
+  "main": "lib\\yooxlebot.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "requestify": "^0.1.17",
+    "slack-client": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laserpez/j00kslebot.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "nodejs",
+    "slack"
+  ],
+  "author": "Simone Finotti",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/laserpez/j00kslebot/issues"
+  },
+  "homepage": "https://github.com/laserpez/j00kslebot#readme"
+}

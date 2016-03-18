@@ -7,7 +7,7 @@ You need:
   - nodejs
   - npm
   - requestify
-  - node-slack-client
+  - slack-client
   - mocha
   - chai
   - chai-spies

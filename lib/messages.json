@@ -5,6 +5,13 @@
 		"Hai capito?!",
 		"Stupendo...",
 		"Una roba fuori dal normale oh!",
-		"Un bot come me a Bologna non lo trovi da nessuna parte :muscle:"
+		"Un bot come me a Bologna non lo trovi da nessuna parte :muscle:",
+		"Ma stiamo scherzando?!"
+	],
+	"not_found": [
+		"Non ho trovato una fava, ragionier <@%s>",
+		"Manco per il cazzo <@%s>",
+		"Mi spiace <@%s>, riprova e controlla.",
+		"Fuccati <@%s>"
 	]
 }

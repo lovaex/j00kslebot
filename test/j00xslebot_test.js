@@ -5,8 +5,10 @@ chai.use(spies);
 
 var expect = chai.expect;
 
-describe("yooxlebot", function() {
-   describe("on message event", function() {
+describe("yooxlebot", function() 
+{
+   describe("on message event", function() 
+   {
        it("should answer if somebody greets the bot on group", function()
        {
  		var rtm = chai.spy.object([ 'sendMessage' ]);       		

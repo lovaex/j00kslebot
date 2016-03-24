@@ -6,12 +6,22 @@
 		"Stupendo...",
 		"Una roba fuori dal normale oh!",
 		"Un bot come me a Bologna non lo trovi da nessuna parte :muscle:",
-		"Ma stiamo scherzando?!"
+		"Ma stiamo scherzando?!",
+		"Ma che ooh!"
 	],
+	
 	"not_found": [
 		"Non ho trovato una fava, ragionier <@%s>",
 		"Manco per il cazzo <@%s>",
 		"Mi spiace <@%s>, riprova e controlla.",
 		"Fuccati <@%s>"
+	],
+
+	"greetings": [
+		"Bella <@%s>!",
+		"Buondì <@%s>!",
+		"Ciao <@%s>",
+		"Wellà <@%s>",
+		"Suca <@%s>"
 	]
 }

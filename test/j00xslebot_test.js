@@ -13,19 +13,19 @@ describe("yooxlebot", function()
        {
  		var rtm = chai.spy.object([ 'sendMessage' ]);       		
  		yooxlebot.on_message({text: "hola <@bot_id>", channel: "G0RFP58EM", user: "U03FYGH7K"}, rtm, "bot_id");
- 		expect(rtm.sendMessage).to.have.been.called.with("Bella <@U03FYGH7K>!", "G0RFP58EM");
+ 		expect(rtm.sendMessage).to.have.been.called;
        })
        it("should answer if somebody greets the bot on channel", function()
        {
             var rtm = chai.spy.object([ 'sendMessage' ]);               
             yooxlebot.on_message({text: "hola <@bot_id>", channel: "C0RFP58EM", user: "U03FYGH7K"}, rtm, "bot_id");
-            expect(rtm.sendMessage).to.have.been.called.with("Bella <@U03FYGH7K>!", "C0RFP58EM");
+            expect(rtm.sendMessage).to.have.been.called;
        })
        it("should always answer if somebody greets on the channel", function()
        {
             var rtm = chai.spy.object([ 'sendMessage' ]);               
             yooxlebot.on_message({text: "hola", channel: "C0RFP58EM", user: "U03FYGH7K"}, rtm, "bot_id");
-            expect(rtm.sendMessage).to.have.been.called.with("Bella <@U03FYGH7K>!", "C0RFP58EM");
+            expect(rtm.sendMessage).to.have.been.called;
        })
        it("should answer on mentioned 'thank you's if group", function()
        {

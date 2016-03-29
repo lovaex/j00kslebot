@@ -72,6 +72,37 @@ describe("yooxlebot", function()
             var rtm = chai.spy.object([ 'sendMessage' ]);               
             yooxlebot.on_message({text: "m 1000", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
             expect(rtm.sendMessage).to.have.been.called();
-       }); 
+       });
+       it("should correctly parse messages like m IT where IT is an existing market", function()
+       {
+            client.get_markets_by_query = function(query, cb_ok, cb_fail) {
+                  return cb_ok({
+                        id: 2,
+                        descrizione: 'Italia',
+                        codice: 'IT'
+                  });
+            }
+            var rtm = chai.spy.object([ 'sendMessage' ]);               
+            yooxlebot.on_message({text: "m IT", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
+            expect(rtm.sendMessage).to.have.been.called();
+       });
+       it("should correctly parse messages like d 3 where 3 is an existing division", function()
+       {
+            client.get_division_by_id = function(market_id, cb_ok, cb_fail) {
+                  return cb_ok({"id": 3, "descrizione": "YOOX", "codice": "yoox"});
+            }
+            var rtm = chai.spy.object([ 'sendMessage' ]);               
+            yooxlebot.on_message({text: "d 3", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
+            expect(rtm.sendMessage).to.have.been.called();
+       });
+       it("should correctly parse messages like d yo where yo is an existing division", function()
+       {
+            client.get_divisions_by_query = function(market_id, cb_ok, cb_fail) {
+                  return cb_ok({"id": 3, "descrizione": "YOOX", "codice": "yoox"});
+            }
+            var rtm = chai.spy.object([ 'sendMessage' ]);               
+            yooxlebot.on_message({text: "d yo", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
+            expect(rtm.sendMessage).to.have.been.called();
+       });  
    });
 });

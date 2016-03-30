@@ -50,11 +50,7 @@ describe("yooxlebot", function()
        it("should correctly parse messages like m 2 where 2 is an existing market", function()
        {
             client.get_market_by_id = function(market_id, cb_ok, cb_fail) {
-                  return cb_ok({
-                        id: 2,
-                        descrizione: 'Italia',
-                        codice: 'IT'
-                  });
+                  return cb_ok({id: 2, descrizione: 'Italia', codice: 'IT'});
             }
             var rtm = chai.spy.object([ 'sendMessage' ]);               
             yooxlebot.on_message({text: "m 2", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
@@ -63,24 +59,25 @@ describe("yooxlebot", function()
        it("should correctly parse messages like m 1000 where 1000 is an unexisting market", function()
        {
             client.get_market_by_id = function(market_id, cb_ok, cb_fail) {
-                  return cb_fail({
-                        id: 2,
-                        descrizione: 'Italia',
-                        codice: 'IT'
-                  });
+                  return cb_fail({id: 2, descrizione: 'Italia', codice: 'IT'});
             }
             var rtm = chai.spy.object([ 'sendMessage' ]);               
             yooxlebot.on_message({text: "m 1000", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
             expect(rtm.sendMessage).to.have.been.called();
        });
+       it("should correctly parse messages like 'm  4' (there's a space).", function()
+       {
+            client.get_market_by_id = function(market_id, cb_ok, cb_fail) {
+                  return cb_ok({id: 4, descrizione: 'Italia', codice: 'IT'});
+            }
+            var rtm = chai.spy.object([ 'sendMessage' ]);
+            yooxlebot.on_message({text: "m  4", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
+            expect(rtm.sendMessage).to.have.been.called();
+       });
        it("should correctly parse messages like m IT where IT is an existing market", function()
        {
             client.get_markets_by_query = function(query, cb_ok, cb_fail) {
-                  return cb_ok({
-                        id: 2,
-                        descrizione: 'Italia',
-                        codice: 'IT'
-                  });
+                  return cb_ok({id: 2, descrizione: 'Italia', codice: 'IT'});
             }
             var rtm = chai.spy.object([ 'sendMessage' ]);               
             yooxlebot.on_message({text: "m IT", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
@@ -103,6 +100,15 @@ describe("yooxlebot", function()
             var rtm = chai.spy.object([ 'sendMessage' ]);               
             yooxlebot.on_message({text: "d yo", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
             expect(rtm.sendMessage).to.have.been.called();
-       });  
+       });
+       it("should correctly parse messages like 'd  12' (there's a space).", function()
+       {
+            client.get_division_by_id = function(market_id, cb_ok, cb_fail) {
+                  return cb_ok({"id": 3, "descrizione": "YOOX", "codice": "yoox"});
+            }
+            var rtm = chai.spy.object([ 'sendMessage' ]);
+            yooxlebot.on_message({text: "d  12", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
+            expect(rtm.sendMessage).to.have.been.called();
+       });
    });
 });

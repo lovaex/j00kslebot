@@ -33,20 +33,26 @@ describe("yooxlebot", function()
        {
  		var rtm = chai.spy.object([ 'makeAPICall' ]);       		
  		yooxlebot.on_message({text: "grazie <@bot_id>!", channel: "G0RFP58EM", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
- 		expect(rtm.makeAPICall).to.have.been.called.with('reactions.add', {name: 'thumbsup', channel: "G0RFP58EM", timestamp: 1.0})
+ 		expect(rtm.makeAPICall).to.have.been.called.with('reactions.add', {name: 'hand', channel: "G0RFP58EM", timestamp: 1.0})
        })
        it("should answer on mentioned 'thank you's if channel", function()
        {
             var rtm = chai.spy.object([ 'makeAPICall' ]);               
             yooxlebot.on_message({text: "grazie <@bot_id>!", channel: "C0RFP58EM", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
-            expect(rtm.makeAPICall).to.have.been.called.with('reactions.add', {name: 'thumbsup', channel: "C0RFP58EM", timestamp: 1.0})
+            expect(rtm.makeAPICall).to.have.been.called.with('reactions.add', {name: 'hand', channel: "C0RFP58EM", timestamp: 1.0})
+       })
+       it("should answer on mentioned 'thank you's if channel", function()
+       {
+            var rtm = chai.spy.object([ 'makeAPICall' ]);               
+            yooxlebot.on_message({text: "grazie bot!", channel: "C0RFP58EM", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
+            expect(rtm.makeAPICall).to.have.been.called.with('reactions.add', {name: 'hand', channel: "C0RFP58EM", timestamp: 1.0})
        })
        it("should answer on direct 'thank you's", function()
        {
  		var rtm = chai.spy.object([ 'makeAPICall' ]);       		
  		yooxlebot.on_message({text: "grazie!", channel: "D0R7PPGNQ", user: "U03FYGH7K", ts: 1.0}, rtm, "bot_id");
- 		expect(rtm.makeAPICall).to.have.been.called.with('reactions.add', {name: 'thumbsup', channel: "D0R7PPGNQ", timestamp: 1.0})
-       });	
+ 		expect(rtm.makeAPICall).to.have.been.called.with('reactions.add', {name: 'hand', channel: "D0R7PPGNQ", timestamp: 1.0})
+       });
        it("should correctly parse messages like m 2 where 2 is an existing market", function()
        {
             client.get_market_by_id = function(market_id, cb_ok, cb_fail) {
